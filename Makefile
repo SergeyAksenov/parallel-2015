@@ -7,13 +7,13 @@ main.o: main.cpp
 	g++ -c main.cpp -lpthread -std=c++0x -o main.o
 
 worker.o: WorkerJob.hpp
-	g++ -c WorkerJob.hpp -std=c++11 -lpthread -o worker.o
+	g++ -c WorkerJob.hpp -std=c++0x -lpthread -o worker.o
 
 command.o: Command.h
-	g++ -c Command.h -std=c++11 -lpthread -o command.o
+	g++ -c Command.h -std=c++0x -lpthread -o command.o
 
 thread.o: thread.cpp
-	g++ -c thread.cpp -std=c++11 -lpthread -o thread.o
+	g++ -c thread.cpp -std=c++0x -lpthread -o thread.o
 
 callable.o: 
 	g++ -c ICallable.hpp -o callable.o
@@ -22,4 +22,4 @@ matrix.o: Matrix.hpp
 	g++ -c Matrix.hpp -o matrix.o
 
 master.o: MasterJob.h 
-	g++ -c -std=c++11 MasterJob.h -lpthread -o master.o
+	g++ -c -std=c++0x MasterJob.h -lpthread -o master.o

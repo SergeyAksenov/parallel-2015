@@ -198,11 +198,9 @@ Matrix<unsigned>* fromCsv(ifstream& in)
             }
             else if (s != "0" && s != ".")
             {
-                cout << "\nOOOH\n";
-                fflush(stdout);
                 exit(0);
             }
-            //throw InputError("CSV incorrect");
+            //throw some
         }
         w = max(w, i);
     }

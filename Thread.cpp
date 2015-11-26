@@ -1,5 +1,6 @@
 #include "Thread.hpp"
 #include <iostream>
+
 using namespace std;
 
 map<pthread_t,unsigned> Thread::_numbers;

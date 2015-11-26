@@ -44,15 +44,15 @@ vector<string> split(const string& s)
 int toInt(const string &s)
 {
     int ret = 0;
-    if (s.size() > 8)
-    throw domain_error(string("\"") + s + "\" is too long for int");
+    //if (s.size() > 8)
+    //throw domain_error(string("\"") + s + "\" too long");
     for (size_t i = 0; i < s.size(); ++i)
     {
         char c = s[i];
         if (c >= '0' && c <= '9')
         ret = ret * 10 + c - '0';
-        else
-        throw domain_error(string("\"") + s + "\" is not an integer");
+        //else
+        //throw domain_error(string("\"") + s + "\" is not an integer");
     }
     return ret;
 }
@@ -95,22 +95,6 @@ private:
     
 };
 
-/*
-class RunCommand: public Command
-{
-    
-public:
-    
-    void operator () (const vector<string>& v)
-    {
-        WorkerJob::isStopped = false;
-        int n = toInt(v[1]);
-        WorkerJob::leftItera = n;
-        WorkerJob::iterCount = n;
-        WorkerJob::runCondVar.wakeAll();
-    }
-    
-};*/
 
 class StopCommand: public Command
 {
