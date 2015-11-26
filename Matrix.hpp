@@ -9,6 +9,9 @@
 #include <sstream>
 #include <fstream>
 #include <algorithm>
+#include <iostream>
+
+using namespace std;
 
 template<typename T>
 class AbstractMatrix
@@ -31,15 +34,15 @@ class Matrix : public AbstractMatrix<T>
     
 public:
     
-    Matrix(const int& width, const int& heigth): _height(heigth), _width(width), _field(vector<vector<T>>(heigth, vector<T>(width))) {}
+    Matrix(const int& width, const int& heigth): _height(heigth), _width(width), _field(vector<vector<T> >(heigth, vector<T>(width))) {}
     
-    Matrix(const vector<vector<T>>& v): _field()
+    Matrix(const vector<vector<T> >& v): _field()
     {
         _height = v.size();
         _width = v[0].size();
-        for (auto w : v)
+        for (int i = 0; i < v.size(); ++i)//auto w : v)
         {
-            _field.push_back(w);
+            _field.push_back(v[i]);
         }
     }
     
@@ -65,10 +68,12 @@ public:
     
     void show()
     {
-        for (auto u:_field)
+        for (int i = 0; i < _field.size(); ++i)//auto u:_field)
         {
-            for (auto v : u)
+            vector<T> u = _field[i];
+            for (int j = 0; j < u.size(); ++i)//auto v : u)
             {
+                T v = u[i];
                 v == 1 ? cout << "*" << " " : cout << " " << " ";
                 //cout << v << " ";
             }
@@ -81,7 +86,7 @@ private:
     
     unsigned _width;
     
-    vector<vector<T>> _field;
+    vector<vector<T> > _field;
     
 };
 
@@ -104,7 +109,7 @@ public:
     T at (const int& i, const int& j) const
     {
         ///////try-catch
-        auto a = *_Matrix;
+        Matrix<unsigned> a = *_Matrix;
         return _Matrix->at(i + _upLeft.first, j + _upLeft.second);
     }
     
@@ -161,7 +166,7 @@ private:
 
 Matrix<unsigned>* getRandomMatrix(int width, int heigth)
 {
-    vector<vector<unsigned>> v(heigth, vector<unsigned>(width));
+    vector<vector<unsigned> > v(heigth, vector<unsigned>(width));
     for (int i = 0; i < heigth; ++i)
     {
         for (int j = 0; j < width; ++j)
@@ -176,7 +181,7 @@ Matrix<unsigned>* getRandomMatrix(int width, int heigth)
 
 Matrix<unsigned>* fromCsv(ifstream& in)
 {
-    vector<pair<int, int>> alive;
+    vector<pair<int, int> > alive;
     string line;
     int h = 0;
     int w = 0;
@@ -201,7 +206,7 @@ Matrix<unsigned>* fromCsv(ifstream& in)
         }
         w = max(w, i);
     }
-    auto ret = new Matrix<unsigned>(h, w);
+    Matrix<unsigned>* ret = new Matrix<unsigned>(h, w);
     for (size_t i = 0; i < alive.size(); ++i)
     {
         ret->set(alive[i].first, alive[i].second, 1);

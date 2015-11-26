@@ -2,8 +2,15 @@
 #define Command_h
 
 #include <deque>
-#include "WorkerJob.hpp"
+#include <vector>
+//#include "WorkerJob.hpp"
 
+using namespace std;
+
+
+
+
+/*
 vector<int> getSizes(int thNum, int wdth)
 {
     int com = wdth / thNum;
@@ -189,6 +196,58 @@ private:
     
     bool* _toExit;
     
+};*/
+
+
+
+
+class Command
+{
+    
+public:
+    
+    virtual void operator () (const vector<string>& v) = 0;
+    
+};
+
+class RunCommand: public Command
+{
+ 
+public:
+ 
+    void operator () (const vector<string>& v);
+
+};
+
+class StartCommand: public Command
+{
+    
+public:
+    
+    void operator () (const vector<string>& v);
+
+};
+
+
+class TimeCommand: public Command
+{
+    
+public:
+    
+    void operator () (const vector<string>& v);
+    
+};
+
+class ExitCommand: public Command
+{
+public:
+    
+    ExitCommand(bool* b): _toExit(b) {}
+    
+    void operator() (const vector<string>& v);
+    
+private:
+    bool* _toExit;
 };
 
 

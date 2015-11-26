@@ -4,7 +4,7 @@ life: main.o worker.o command.o thread.o matrix.o master.o
 	g++ main.o worker.o command.o thread.o matrix.o master.o -o life
 
 main.o: main.cpp
-	g++ -c main.cpp -lpthread -std=c++11 -o main.o
+	g++ -c main.cpp -lpthread -std=c++0x -o main.o
 
 worker.o: WorkerJob.hpp
 	g++ -c WorkerJob.hpp -std=c++11 -lpthread -o worker.o

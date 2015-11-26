@@ -20,36 +20,27 @@ int WorkerJob::leftItera = 0;
 
 int WorkerJob::iterCount = 0;
 
-bool WorkerJob::isStopped = false;
+bool WorkerJob::isStopped = true;
 
 bool WorkerJob::toExit = false;
 
-ConditionalVariable WorkerJob::condvar;
+ConditionalVariable WorkerJob::iterCondVar;
 
-ConditionalVariable WorkerJob::isRunning;
+ConditionalVariable WorkerJob::runCondVar;
+
+ConditionalVariable WorkerJob::blockCondVar;
 
 Mutex WorkerJob::mtx;
 
+Mutex WorkerJob::blockMutex;
+
 Matrix<unsigned>* WorkerJob::lastVersion = nullptr;
 
-struct A
-{
-    void operator () ()
-    {
-        cout << "Hello world";
-        fflush(stdout);
-        throw 20;
-    }
-};
 
 int main()
 {
     srand(time(NULL));
-    string s;
-    getline(cin,s);
-    auto v = split(s);
-    StartCommand stcmd;
-    stcmd(v);
     MasterJob mj;
-    mj();    return 0;
+    mj();
+    return 0;
 }
