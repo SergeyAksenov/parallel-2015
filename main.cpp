@@ -34,7 +34,7 @@ Mutex WorkerJob::mtx;
 
 Mutex WorkerJob::blockMutex;
 
-Matrix<unsigned>* WorkerJob::lastVersion = nullptr;
+Matrix<unsigned>* WorkerJob::lastVersion = NULL;
 
 
 int main()

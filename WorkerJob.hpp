@@ -44,15 +44,11 @@ vector<string> split(const string& s)
 int toInt(const string &s)
 {
     int ret = 0;
-    //if (s.size() > 8)
-    //throw domain_error(string("\"") + s + "\" too long");
     for (size_t i = 0; i < s.size(); ++i)
     {
         char c = s[i];
         if (c >= '0' && c <= '9')
         ret = ret * 10 + c - '0';
-        //else
-        //throw domain_error(string("\"") + s + "\" is not an integer");
     }
     return ret;
 }
@@ -235,7 +231,7 @@ void StartCommand:: operator() (const vector<string>&v)
     int width;
     int i = 0;
     vector<int> sizes;
-    Matrix<unsigned> *M = nullptr;
+    Matrix<unsigned> *M = NULL;
     if (v.size() > 4 || v.size() < 3)
     {
         //

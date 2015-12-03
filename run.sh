@@ -6,9 +6,9 @@ test_program_path="./life"
 concurrency=$1
 
 i=1
-while [  $i -lt 10 ]; do
+while [  $i -lt 5 ]; do
     j=0
-    while [  $j -lt 5 ]; do
+    while [  $j -lt 3 ]; do
         $test_program_path <<< "START $i 48 12
 			TIME 100
 			EXIT
@@ -18,3 +18,5 @@ while [  $i -lt 10 ]; do
     let i=i+1
 
 done
+
+
